@@ -1,0 +1,40 @@
+﻿@page
+@attribute [Microsoft.AspNetCore.Authorization.Authorize]
+@model FinancePreferenceSys.Pages.ProductPage.IndexModel
+@{
+    ViewData["Title"] = "金融商品管理";
+}
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>金融商品管理</h2>
+        <a class="btn btn-primary" asp-page="Create">新增金融商品</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>名稱</th>
+                    <th>價格</th>
+                    <th>手續費率 (%)</th>
+                    <th style="width: 180px;">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ProductList)
+                {
+                    <tr>
+                        <td>@Html.Encode(item.ProductName)</td>
+                        <td>@item.Price.ToString("#,##0")</td>
+                        <td>@item.FeeRate.ToString("p")</td>
+                        <td>
+                            <a class="btn btn-sm btn-info me-1" asp-page="Edit" asp-route-id="@item.No">編輯</a>
+                            <a class="btn btn-sm btn-danger" asp-page="Delete" asp-route-id="@item.No">刪除</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

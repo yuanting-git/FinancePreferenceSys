@@ -1,0 +1,18 @@
+USE [FinancePreferenceDB]
+GO
+DROP PROCEDURE [dbo].[spGetUserByEmail]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[spGetUserByEmail]
+    @Email NVARCHAR(255)
+AS
+BEGIN
+    SELECT * FROM [User] WHERE Email = @Email
+END
+GO
+
+

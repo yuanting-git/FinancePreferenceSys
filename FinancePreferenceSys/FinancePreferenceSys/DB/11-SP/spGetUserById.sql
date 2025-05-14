@@ -1,0 +1,20 @@
+USE [FinancePreferenceDB]
+GO
+DROP PROCEDURE [dbo].[spGetUserById]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROCEDURE [dbo].[spGetUserById]
+    @UserID UNIQUEIDENTIFIER
+AS
+BEGIN
+    SELECT * FROM [User]
+    WHERE UserID = @UserID
+END
+GO
+
+

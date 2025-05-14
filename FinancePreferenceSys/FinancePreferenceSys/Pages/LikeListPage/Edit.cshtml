@@ -1,0 +1,94 @@
+﻿@page "{sn:int}"
+@model FinancePreferenceSys.Pages.LikeListPage.EditModel
+@{
+    ViewData["Title"] = "編輯喜好金融商品清單";
+}
+
+<h2>編輯喜好金融商品清單</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Input.SN" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label class="form-label">選擇商品</label>
+        <select asp-for="Input.ProductNo" class="form-select" id="ProductNo">
+            @foreach (var product in Model.Products)
+            {
+                <option value="@product.No"
+                        data-name="@product.ProductName"
+                        data-price="@product.Price"
+                        data-fee="@product.FeeRate">
+                    @product.ProductName
+                </option>
+            }
+        </select>
+        <span asp-validation-for="Input.ProductNo" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">產品價格</label>
+        <input type="text" id="Price" class="form-control" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">手續費率</label>
+        <input type="text" id="FeeRate" class="form-control" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">購買數量</label>
+        <input asp-for="Input.OrderNum" class="form-control" id="OrderNum" />
+        <span asp-validation-for="Input.OrderNum" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">扣款帳號</label>
+        <input asp-for="Input.Account" class="form-control" />
+        <span asp-validation-for="Input.Account" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">總手續費</label>
+        <input asp-for="Input.TotalFee" class="form-control" id="Input_TotalFee" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">預計總扣款金額</label>
+        <input asp-for="Input.TotalAmount" class="form-control" id="Input_TotalAmount" readonly />
+    </div>
+
+    <button type="submit" class="btn btn-primary">更新</button>
+    <a asp-page="Index" class="btn btn-secondary">取消</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        const productSelect = document.getElementById("ProductNo");
+        const priceInput = document.getElementById("Price");
+        const feeInput = document.getElementById("FeeRate");
+        const qtyInput = document.getElementById("OrderNum");
+        const totalFeeInput = document.getElementById("Input_TotalFee");
+        const totalAmtInput = document.getElementById("Input_TotalAmount");
+
+        function calc() {
+            const selected = productSelect.options[productSelect.selectedIndex];
+            const price = parseFloat(selected.getAttribute("data-price")) || 0;
+            const feeRate = parseFloat(selected.getAttribute("data-fee")) || 0;
+            const qty = parseInt(qtyInput.value) || 0;
+
+            const fee = Math.round(qty * price * feeRate);
+            const total = Math.round(qty * price + fee);
+
+            priceInput.value = price.toLocaleString("en-US");
+            feeInput.value = (feeRate * 100).toFixed(1) + '%';
+            totalFeeInput.value = fee.toLocaleString("en-US");
+            totalAmtInput.value = total.toLocaleString("en-US");
+        }
+
+        productSelect.addEventListener("change", calc);
+        qtyInput.addEventListener("input", calc);
+        window.addEventListener("load", calc); // 頁面載入時預先計算
+    </script>
+}

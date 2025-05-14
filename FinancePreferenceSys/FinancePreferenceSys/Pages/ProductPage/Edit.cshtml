@@ -1,0 +1,43 @@
+﻿@page
+@model FinancePreferenceSys.Pages.ProductPage.EditModel
+
+@{
+    ViewData["Title"] = "編輯金融商品";
+}
+
+<div class="container">
+    <h2>編輯金融商品</h2>
+    <form method="post">
+        <input type="hidden" asp-for="Product.No" />
+        <div class="mb-3">
+            <label for="Product_ProductName" class="form-label">名稱</label>
+            <input asp-for="Product.ProductName" class="form-control" />
+            <span asp-validation-for="Product.ProductName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="Product_ProductName" class="form-label">價格</label>
+            <input asp-for="Product.Price" class="form-control" inputmode="decimal" onblur="formatNumber(this)" value="@Model.Product.Price.ToString("#,##0")" />
+            <span asp-validation-for="Product.Price" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="Product_ProductName" class="form-label">手續費率(%) ex: 10%直接輸入10</label>
+            <input asp-for="Product.FeeRate" class="form-control" inputmode="decimal" min="0" max="999.99" value="@Model.Product.FeeRate.ToString("0.##")" />
+            <span asp-validation-for="Product.FeeRate" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">儲存</button>
+        <a asp-page="./Index" class="btn btn-secondary">返回</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function formatNumber(input) {
+            let value = input.value.replace(/,/g, '');
+            if (!isNaN(value)) {
+                let num = parseFloat(value);
+                input.value = num % 1 === 0 ? num.toLocaleString('en-US', { maximumFractionDigits: 0 }) : num.toLocaleString('en-US');
+            }
+        }
+    </script>
+}

@@ -1,0 +1,19 @@
+USE [FinancePreferenceDB]
+GO
+DROP PROCEDURE [dbo].[spDeleteLikeList]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE   PROCEDURE [dbo].[spDeleteLikeList]
+    @SN INT
+AS
+BEGIN
+    DELETE FROM LikeList WHERE SN = @SN
+END
+
+GO
+
+

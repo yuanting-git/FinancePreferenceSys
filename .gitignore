@@ -1,0 +1,64 @@
+# .NET
+bin/
+obj/
+out/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.swp
+
+# Visual Studio
+.vs/
+.vscode/
+*.code-workspace
+
+# ASP.NET user secrets
+**/secrets.json
+**/secrets/
+
+# Rider
+.idea/
+*.sln.iml
+
+# Build result
+*.dll
+*.exe
+*.app
+*.log
+*.pdb
+
+# NuGet
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+
+# Entity Framework
+Migrations/
+
+# Logs
+*.log
+logs/
+
+# Publish
+publish/
+wwwroot/dist/
+wwwroot/node_modules/
+
+# Node/npm/yarn
+node_modules/
+npm-debug.log
+yarn-error.log
+.env
+.env.*
+
+# Temporary
+*.tmp
+*.temp
+*.bak
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db

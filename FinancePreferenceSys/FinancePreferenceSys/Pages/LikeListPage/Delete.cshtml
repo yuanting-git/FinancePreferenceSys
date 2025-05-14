@@ -1,0 +1,20 @@
+﻿@page "{sn:int}"
+@model FinancePreferenceSys.Pages.LikeListPage.DeleteModel
+@{
+    ViewData["Title"] = "刪除金融商品喜好清單";
+}
+
+<div class="container">
+    <h2>刪除金融商品喜好清單</h2>
+    <h5 class="text-danger">你確定要刪除這項喜好金融商品嗎？</h5>
+
+    <div class="mb-3"><strong>名稱：</strong> @Model.Item.ProductName</div>
+    <div class="mb-3"><strong>購買數量：</strong> @Model.Item.OrderNum</div>
+    <div class="mb-3"><strong>扣款帳號：</strong> @Model.Item.Account</div>
+
+    <form method="post">
+        <input type="hidden" asp-for="Item.SN" />
+        <button type="submit" class="btn btn-danger">確認刪除</button>
+        <a asp-page="./Index" class="btn btn-secondary">取消</a>
+    </form>
+</div>

@@ -1,0 +1,49 @@
+﻿@page
+@model FinancePreferenceSys.Pages.AccountPage.RegisterModel
+@{
+    ViewData["Title"] = "註冊帳號";
+}
+
+<div class="container mt-4">
+    <h2>註冊帳號</h2>
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="mb-3">
+            <label for="Register_UserName" class="form-label">使用者名稱</label>
+            <input name="Register.UserName" id="Register_UserName" class="form-control" value="@Model.Register.UserName" />
+            <span asp-validation-for="Register.UserName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Register_Email" class="form-label">電子郵件</label>
+            <input name="Register.Email" id="Register_Email" class="form-control" value="@Model.Register.Email" />
+            <span asp-validation-for="Register.Email" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Register_Account" class="form-label">帳號</label>
+            <input name="Register.Account" id="Register_Account" class="form-control" value="@Model.Register.Account" />
+            <span asp-validation-for="Register.Account" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Register_Password" class="form-label">密碼</label>
+            <input name="Register.Password" id="Register_Password" class="form-control" type="password" />
+            <span asp-validation-for="Register.Password" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Register_ConfirmPassword" class="form-label">確認密碼</label>
+            <input name="Register.ConfirmPassword" id="Register_ConfirmPassword" class="form-control" type="password" />
+            <span asp-validation-for="Register.ConfirmPassword" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">註冊</button>
+        <a asp-page="/Index" class="btn btn-secondary">取消</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

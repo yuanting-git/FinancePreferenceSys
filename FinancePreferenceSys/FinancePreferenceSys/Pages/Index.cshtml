@@ -1,0 +1,16 @@
+﻿@page
+@attribute [Microsoft.AspNetCore.Authorization.Authorize]
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">歡迎使用金融商品喜好紀錄系統</h1>
+
+    @if (User.Identity?.IsAuthenticated ?? false)
+    {
+        <a class="btn btn-primary" asp-page="/ProductPage/Index">金融商品管理</a>
+        <a class="btn btn-success" asp-page="/LikeListPage/Index">金融商品喜好清單</a>
+    }
+</div>

@@ -1,0 +1,18 @@
+USE [FinancePreferenceDB]
+GO
+DROP PROCEDURE [dbo].[spDeleteProduct]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[spDeleteProduct]
+    @No INT
+AS
+BEGIN
+    DELETE FROM Product WHERE No = @No
+END
+GO
+
+
