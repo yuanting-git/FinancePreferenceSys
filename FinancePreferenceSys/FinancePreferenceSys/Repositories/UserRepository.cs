@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using FinancePreferenceSys.Data;
 using FinancePreferenceSys.Models;
 using FinancePreferenceSys.Repositories.Interfaces;
 using Microsoft.Data.SqlClient;

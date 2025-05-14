@@ -1,5 +1,4 @@
-﻿using FinancePreferenceSys.Data;
-using FinancePreferenceSys.Models;
+﻿using FinancePreferenceSys.Models;
 using FinancePreferenceSys.Repositories.Interfaces;
 using FinancePreferenceSys.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;

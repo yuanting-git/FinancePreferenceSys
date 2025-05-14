@@ -1,4 +1,4 @@
-using FinancePreferenceSys.Data;
+
 using FinancePreferenceSys.Repositories.Interfaces;
 using FinancePreferenceSys.Repositories;
 using FinancePreferenceSys.Services;
@@ -6,10 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using FinancePreferenceSys.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// 加入資料庫服務
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add services to the container.
 builder.Services.AddRazorPages();

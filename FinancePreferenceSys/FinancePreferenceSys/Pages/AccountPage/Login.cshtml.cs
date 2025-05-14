@@ -1,4 +1,3 @@
-using FinancePreferenceSys.Data;
 using FinancePreferenceSys.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;

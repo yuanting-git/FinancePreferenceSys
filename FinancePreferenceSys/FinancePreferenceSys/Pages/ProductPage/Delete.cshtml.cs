@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using FinancePreferenceSys.Data;
 using FinancePreferenceSys.Models;
 using FinancePreferenceSys.Services;
 using FinancePreferenceSys.Services.Interfaces;
